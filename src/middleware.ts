@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 
-const loggedInRoutes = ["/explore"];
+const loggedInRoutes = ["/profile","/profile/update-password", "/profile/moments", "/profile/travels", "/create-travel"];
 const loggedOutRoutes = ["/login", "/register"];
 
 export default async function AuthMiddleware(
