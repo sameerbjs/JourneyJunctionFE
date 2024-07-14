@@ -1,11 +1,15 @@
 "use client";
 
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { createTravel } from "@/redux/slices/travelSlice";
 import validationCreateTravelSchema from "@/schema/createTravelSchema";
 import { Button, Field, Input, Label, Textarea } from "@headlessui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { RootState } from "@/redux/rootReducer";
 
 interface Stop {
     "Stop Start Location": string;
@@ -26,10 +30,15 @@ interface FormData {
 }
 
 const CreateTravel = () => {
+    const router = useRouter();
+    const userId = useAppSelector((state:RootState)=> state.auth.data?.user._id); 
+    const dispatch = useAppDispatch();
+
     const {
         register,
         handleSubmit,
         setValue,
+        reset,
         formState: { errors },
     } = useForm<FormData>({
         resolver: yupResolver(validationCreateTravelSchema),
@@ -48,7 +57,13 @@ const CreateTravel = () => {
     };
 
     const onSubmit = async (data: FormData) => {
-        console.log("data :>> ", data);
+
+        const travelData = {...data, userId }
+        const response = await dispatch(createTravel(travelData));
+        if (response.status === 200) {
+            reset();
+            router.push("/profile/travels");
+        }
     };
 
     const removeStop = (index: number) => {

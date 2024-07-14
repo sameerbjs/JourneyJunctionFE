@@ -103,13 +103,26 @@ const Api = {
 	},
 	async createTravel(
 		query: Query,
-		id: string
 	): Promise<AxiosResponse | any | AxiosError<any>> {
 		if (!api) {
 			throw new Error("API not initialized");
 		}
 		try {
 			const response = await api.post(`create-travel`, query);
+			return response;
+		} catch (error) {
+			const axiosError = error as AxiosError<any>;
+			return axiosError.response;
+		}
+	},
+	async getUserTravel(
+		id: string
+	): Promise<AxiosResponse | any | AxiosError<any>> {
+		if (!api) {
+			throw new Error("API not initialized");
+		}
+		try {
+			const response = await api.get(`user-travels/${id}`);
 			return response;
 		} catch (error) {
 			const axiosError = error as AxiosError<any>;

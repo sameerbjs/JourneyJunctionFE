@@ -15,12 +15,12 @@ export default function Home() {
                     </p>
                     <PeopleTravel />
                 </div>
-                <div>
+                {/* <div>
                     <p className="capitalize text-center text-primary text-2xl font-normal">
                         Travels
                     </p>
                     <Travels />
-                </div>
+                </div> */}
                 <div>
                     <p className="capitalize text-center text-primary text-2xl font-normal">
                         moments

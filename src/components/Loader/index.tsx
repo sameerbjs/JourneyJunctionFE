@@ -14,7 +14,7 @@ const Loader = ({ size }: Props) => {
         <div role="status">
             <svg
                 aria-hidden="true"
-                className="animate-spin text-white fill-primary"
+                className="animate-spin text-secondary fill-primary"
                 viewBox="0 0 100 101"
                 fill="none"
                 width={size.width}

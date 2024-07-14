@@ -26,6 +26,7 @@ const persistConfig = {
     key: "user",
     storage,
     whitelist: ["auth"],
+    blacklist : ["travel"]
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
