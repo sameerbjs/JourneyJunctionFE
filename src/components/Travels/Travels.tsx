@@ -89,7 +89,7 @@ const Travels = (props: Props) => {
                                     alt="avatar"
                                     width={50}
                                     height={50}
-                                    className="rounded-full"
+                                    className="rounded-full min-h-[50px] min-w-[50px]"
                                 />
                                 <p className="text-base font-normal">
                                     {travel.user.full_name}
