@@ -37,7 +37,7 @@ const ChangePassword = () => {
         }
 
         const json = await dispatch(updatePassword(data, id || ""));
-        if (json.status === 200) {
+        if (json?.status === 200) {
             reset();
         }
     };

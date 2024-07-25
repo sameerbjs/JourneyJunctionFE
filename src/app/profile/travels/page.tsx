@@ -1,5 +1,4 @@
 import Travels from "@/components/Travels/Travels";
-import axios from "axios";
 import Link from "next/link";
 import React from "react";
 

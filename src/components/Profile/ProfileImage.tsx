@@ -67,7 +67,7 @@ const ProfileImage = (props: Props) => {
             updateProfileImage(data, userData?._id || "")
         );
 
-        if (json.status === 200) {
+        if (json?.status === 200) {
             setIsChange(false);
         }
     };

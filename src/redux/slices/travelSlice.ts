@@ -70,7 +70,7 @@ const travelSlice = createSlice({
 export const createTravel = (query: Query) => async (dispatch: any) => {
     dispatch(setLoading(true));
     const json = await Api.createTravel(query);
-    if (json.status === 200) {
+    if (json?.status === 200) {
         dispatch(setLoading(false));
         NotificationService.success(`Travel create successfully`);
     } else {
@@ -83,7 +83,7 @@ export const createTravel = (query: Query) => async (dispatch: any) => {
 export const getUserTravel = (id: string) => async (dispatch: any) => {
     dispatch(setLoading(true));
     const json = await Api.getUserTravel(id);
-    if (json.status === 200) {
+    if (json?.status === 200) {
         dispatch(setLoading(false));
         dispatch(setUserTravel({ travels: json?.data?.travels }))
     } else {

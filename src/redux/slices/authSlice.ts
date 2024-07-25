@@ -68,7 +68,7 @@ const authSlice = createSlice({
 export const userRegister = (query: Query) => async (dispatch: any) => {
     dispatch(setLoading(true));
     const json = await Api.registerUser(query);
-    if (json.status === 200) {
+    if (json?.status === 200) {
         dispatch(setLoading(false));
         NotificationService.success(`User registered successfully`);
     } else {
@@ -81,7 +81,7 @@ export const userRegister = (query: Query) => async (dispatch: any) => {
 export const userLogin = (query: Query) => async (dispatch: any) => {
     dispatch(setLoading(true));
     const json = await Api.loginUser(query);
-    if (json.status === 200) {
+    if (json?.status === 200) {
         dispatch(setLoading(false));
         dispatch(setUserData(json.data));
         NotificationService.success(`User login successfully`);
@@ -96,7 +96,7 @@ export const updatePassword =
     (query: Query, id: string) => async (dispatch: any) => {
         dispatch(setLoading(true));
         const json = await Api.updatePassword(query, id);
-        if (json.status === 200) {
+        if (json?.status === 200) {
             dispatch(setLoading(false));
             NotificationService.success(`Password update successfully`);
         } else {
@@ -110,7 +110,7 @@ export const updateProfileImage =
     (query: Query, id: string) => async (dispatch: any) => {
         dispatch(setLoading(true));
         const json = await Api.updateProfileImage(query, id);
-        if (json.status === 200) {
+        if (json?.status === 200) {
             dispatch(setLoading(false));
             dispatch(setUserUpdateData(json.data.user));
             NotificationService.success(`Profile image update successfully`);
@@ -125,7 +125,7 @@ export const updateProfile =
     (query: Query, id: string) => async (dispatch: any) => {
         dispatch(setLoading(true));
         const json = await Api.updateProfile(query, id);
-        if (json.status === 200) {
+        if (json?.status === 200) {
             dispatch(setLoading(false));
             dispatch(setUserUpdateData(json.data.user));
             NotificationService.success(`Profile update successfully`);
